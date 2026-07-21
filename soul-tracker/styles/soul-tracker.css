@@ -1,0 +1,16 @@
+.soul-tracker { display:flex; flex-direction:column; gap:8px; height:100%; color:#e8e0d5; }
+.soul-tracker .toolbar, .soul-tracker .stats { display:flex; gap:10px; }
+.soul-tracker .stats span { font-weight:bold; }
+.soul-tracker .panels { display:flex; gap:12px; flex:1; min-height:0; }
+.soul-tracker .roster, .soul-tracker .ledger { flex:1; overflow-y:auto; border:1px solid #5a3a3a; padding:6px; }
+.soul-tracker .passenger { display:flex; justify-content:space-between; padding:4px 6px; border-bottom:1px solid #3a2a2a; }
+.soul-tracker .passenger.host { animation:soulPulse 1.2s infinite; }
+.soul-tracker .passenger.host.dead { animation:none; background:#3a0000; }
+.soul-tracker .passenger.dead .pname { text-decoration:line-through; opacity:.5; }
+.soul-tracker .passenger.scarred .pname { color:#c98; }
+.soul-tracker .tag { font-size:.7em; color:#f66; margin-left:4px; }
+.soul-tracker .entry { font-size:.82em; padding:2px 0; border-bottom:1px dashed #333; }
+.soul-tracker .entry .ts { color:#888; margin-right:6px; }
+.soul-tracker .hint { font-size:.75em; opacity:.6; }
+@keyframes soulPulse { 0%,100%{background:#2a0000;} 50%{background:#5a0000;} }
+.soul-alert p { font-size:1.05em; line-height:1.5; }

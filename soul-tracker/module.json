@@ -1,0 +1,21 @@
+{
+  "id": "soul-tracker",
+  "title": "Soul Tracker (CoC Parasite Manifest)",
+  "description": "GM-only passenger/infestation tracker for a Call of Cthulhu one-shot. Links to actors, alerts players on infestation, exports narrative JSON.",
+  "version": "1.0.0",
+  "compatibility": { "minimum": "13", "verified": "13", "maximum": "13" },
+  "authors": [{ "name": "Michael" }],
+  "esmodules": ["scripts/soul-tracker.js"],
+  "styles": ["styles/soul-tracker.css"],
+  "languages": [{ "lang": "en", "name": "English", "path": "lang/en.json" }],
+  "relationships": {
+    "requires": [
+      {
+        "id": "socketlib",
+        "type": "module",
+        "compatibility": { "minimum": "1.0.0" }
+      }
+    ]
+  },
+  "socket": true
+}
