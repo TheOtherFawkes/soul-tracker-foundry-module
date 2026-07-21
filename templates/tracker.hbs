@@ -1,0 +1,55 @@
+<div class="soul-tracker">
+  <div class="toolbar">
+    <button type="button" data-action="exportJson"><i class="fas fa-download"></i> Save .json</button>
+    <button type="button" data-action="clearLog"><i class="fas fa-eraser"></i> Clear log</button>
+    <button type="button" data-action="resetAll"><i class="fas fa-skull-crossbones"></i> Reset all</button>
+  </div>
+
+  <div class="stats">
+    <span>Souls: {{souls}}</span><span>Touched: {{touched}}</span><span>Dead: {{dead}}</span>
+  </div>
+
+  <div class="panels">
+    <div class="roster">
+      <div class="infest-controls">
+        <button type="button" data-action="infestSelected" data-mode="silent">◈ Infest (silent)</button>
+        <button type="button" data-action="infestSelected" data-mode="immediate">◈ Infest (immediate)</button>
+        <p class="hint">Select a token or actor sheet, then choose a mode.</p>
+      </div>
+      {{#each passengers}}
+        <div class="passenger {{#if this.infestedNow}}host{{/if}} {{#if this.dead}}dead{{/if}} {{#if this.hostedAlive}}scarred{{/if}}">
+          <span class="pname">{{this.name}}
+            {{#if this.infestedNow}}<em class="tag">host{{#if this.dead}} · corpse{{/if}}</em>{{/if}}
+          </span>
+          <span class="pbtns">
+            <button type="button" data-action="killToggle" data-actor-id="{{this.actorId}}">{{#if this.dead}}raise{{else}}✝ kill{{/if}}</button>
+            {{#if ../pendingVictimId}}
+              {{#unless this.dead}}
+                <button type="button" data-action="pickKiller" data-victim-id="{{../pendingVictimId}}" data-killer-id="{{this.actorId}}">select as killer</button>
+              {{/unless}}
+              {{#if (eq this.actorId ../pendingVictimId)}}
+                <button type="button" data-action="pickKiller" data-victim-id="{{../pendingVictimId}}" data-killer-id="{{this.actorId}}">✝ own hand</button>
+              {{/if}}
+            {{/if}}
+          </span>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="ledger">
+      {{#each ledger}}
+        <div class="entry {{this.type}}">
+          <span class="ts">{{this.time.display}}</span>
+          {{#if (eq this.type "jump")}}<span>{{this.sourceName}} → <b>{{this.victimName}}</b>{{#if this.intoCorpse}} (into corpse){{/if}}{{#if this.firstHost}} (first host){{/if}} — {{this.mode}}</span>{{/if}}
+          {{#if (eq this.type "death")}}<span><b>{{this.victimName}}</b> dies [{{this.status}}]{{#if this.killerName}} — by {{this.killerName}}{{#if this.killerHost}} (host-forced){{/if}}{{#if this.suicide}} (own hand){{/if}}{{/if}}{{#if this.pending}} — awaiting killer{{/if}}</span>{{/if}}
+          {{#if (eq this.type "revival")}}<span><b>{{this.victimName}}</b> rises</span>{{/if}}
+          {{#if (eq this.type "note")}}<span>📝 {{this.text}}</span>{{/if}}
+        </div>
+      {{/each}}
+      <div class="ledger-controls">
+        <input type="text" placeholder="Add note…" />
+        <button type="button" data-action="addNote">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
