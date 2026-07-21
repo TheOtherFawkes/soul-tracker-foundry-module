@@ -2,7 +2,7 @@
   "id": "soul-tracker",
   "title": "Soul Tracker (CoC Parasite Manifest)",
   "description": "GM-only passenger/infestation tracker for a Call of Cthulhu one-shot. Auto-syncs to world actors, infest from inside the tracker, live updates, editable alert presets, narrative JSON export.",
-  "version": "1.1.0",
+  "version": "1.0.1",
   "compatibility": { "minimum": "13", "verified": "13", "maximum": "13" },
   "authors": [{ "name": "Michael" }],
   "esmodules": ["scripts/soul-tracker.js"],
@@ -15,5 +15,5 @@
   },
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/TheOtherFawkes/soul-tracker-foundry-module/main/module.json",
-  "download": "https://github.com/TheOtherFawkes/soul-tracker-foundry-module/releases/download/v1.1.0/soul-tracker.zip"
+  "download": "https://github.com/TheOtherFawkes/soul-tracker-foundry-module/releases/download/v1.0.1/soul-tracker.zip"
 }
